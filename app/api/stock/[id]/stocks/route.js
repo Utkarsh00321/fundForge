@@ -1,0 +1,28 @@
+import { connectToDB } from "@utils/database";
+import Stock from "@models/stock";
+
+export const GET = async (req, { params }) => {
+  try {
+    await connectToDB();
+    const stocks = await Stock.find({ user: params.id });
+    return new Response(JSON.stringify(stocks), {
+      status: 200,
+    });
+  } catch (error) {
+    return new Response("Failed to fetch any Fixed Deposits", {
+      status: 500,
+    });
+  }
+};
+
+export const DELETE = async (req, { params }) => {
+  try {
+    await connectToDB();
+
+    await Stock.findByIdAndDelete(params.id);
+
+    return new Response("FD deleted successfully!");
+  } catch (error) {
+    return new Response("Failed to delete FD", { status: 500 });
+  }
+};
