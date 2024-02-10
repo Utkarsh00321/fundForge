@@ -4,7 +4,7 @@ import React from "react";
 const Maindiv = () => {
   return (
     <>
-      <section className="w-full flex-center flex-row">
+      <section className="w-full h-screen flex-center flex-row">
         <div className="text-left ">
           <h1 className="font-serif leading-normal my-text-1 font-semibold opacity-95">
             <span className="text-blue-500">fundForge</span>, your partner{" "}

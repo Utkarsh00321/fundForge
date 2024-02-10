@@ -1,18 +1,40 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+
+import HamBuger from "./Ham";
+import Xmark from "./Xmark";
+
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
-import { useRouter } from "next/navigation";
+
+const navLinks = [
+  {
+    title: "Home",
+    path: "/Home",
+  },
+  {
+    title: "Stocks",
+    path: "/Stocks",
+  },
+  {
+    title: "Gold",
+    path: "/Gold",
+  },
+  {
+    title: "Fd",
+    path: "/Fd",
+  },
+  {
+    title: "RealEstate",
+    path: "/RealEstate",
+  },
+];
 
 const Nav = () => {
+  const [navbarOpen, setnavbarOpen] = useState(false);
   const { data: session } = useSession();
   const [providers, setProviders] = useState(null);
-  const [toggleDropdown, setToogleDropdown] = useState(false);
-  const [toggle, setToggle] = useState(false);
-
-  const router = useRouter();
 
   useEffect(() => {
     const setUpProviders = async () => {
@@ -22,65 +44,150 @@ const Nav = () => {
     setUpProviders();
   }, []);
   return (
-    <nav className="w-full flex-between mb-16 pt-3">
-      <Link className="font-bold text-3xl px-4 mr-12 text-blue-500" href="/">
-        fundForge
-      </Link>
+    <nav className="fixed grid mx-auto border border-[#88acd7] top-0 left-0 right-0 z-10 bg-transparent bg-opacity-90">
       {/* Desktop Navigation */}
-      {session?.user ? (
-        <div className="w-full flex gap-24 md:gap-20  items-center  font-semibold">
-          <Link href="/Home" className="hover:text-slate-500">
-            Home
-          </Link>
-          <Link href="/Stocks" className="hover:text-slate-500">
-            Stocks
-          </Link>
-          <Link href="/Gold" className="hover:text-slate-500">
-            Gold
-          </Link>
-          <Link href="/Fd" className="hover:text-slate-500">
-            FD
-          </Link>
-          <Link href="/RealEstate" className="hover:text-slate-500">
-            Real Estate
-          </Link>
-          <button type="button" onClick={signOut} className="blue_btn">
-            Sign Out
-          </button>
-          <Image
-            src={session?.user.image}
-            width={37}
-            height={37}
-            className="rounded-full"
-          />
-        </div>
-      ) : (
-        <div className="flex">
-          <button
-            type="button"
-            onClick={() => setToggle((prev) => !prev)}
-            className="bg-blue-500 px-4 py-2 text-white rounded-lg hover:bg-blue-800 hover:text-slate-400"
+      {/* Desktop Navigation */}
+      <div className="relative container lg:py-6 mx-auto px-4 py-2 hidden md:flex md:items-center md:justify-between">
+        <Link
+          className="flex items-center font-bold text-3xl text-center md:text-left px-4 mr-12 text-blue-500"
+          href="/"
+        >
+          fundForge
+        </Link>
+
+        {/* Move the button outside of the div for the "fundForge" heading */}
+        {session?.user ? (
+          <div className="flex items-center font-semibold">
+            <Link href="/Home" className="hover:text-slate-500 px-4">
+              Home
+            </Link>
+            <Link href="/Stocks" className="hover:text-slate-500 px-4">
+              Stocks
+            </Link>
+            <Link href="/Gold" className="hover:text-slate-500 px-4">
+              Gold
+            </Link>
+            <Link href="/Fd" className="hover:text-slate-500 px-4">
+              FD
+            </Link>
+            <Link href="/RealEstate" className="hover:text-slate-500 px-4">
+              Real Estate
+            </Link>
+          </div>
+        ) : (
+          <div className="absolute top-6 right-5">
+            {/* Add hidden md:block to hide the div on small screens */}
+            {providers &&
+              Object.values(providers).map((provider) => (
+                <button
+                  type="button"
+                  key={provider.name}
+                  onClick={() => {
+                    signIn(provider.id);
+                  }}
+                  className="blue_btn"
+                >
+                  Sign in
+                </button>
+              ))}
+          </div>
+        )}
+
+        {/* Button and Image */}
+        {session?.user && (
+          <div className="flex items-center">
+            <button type="button" onClick={signOut} className="blue_btn px-4">
+              Sign Out
+            </button>
+            <Image
+              src={session?.user.image}
+              width={37}
+              height={37}
+              alt="profile-image"
+              className="rounded-full ml-4"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Mobile Navigation */}
+
+      <div className="md:hidden">
+        <div className="flex flex-wrap">
+          <Link
+            className="font-bold text-4xl py-10 px-4 mr-12 text-blue-500"
+            href="/"
           >
-            Sign In
-          </button>
-          {toggle && providers && (
-            <div className="dropdown1">
-              {Object.values(providers).map((provider) => (
-                <>
+            fundForge
+          </Link>
+          {session?.user ? (
+            <div className="absolute top-12 right-5">
+              {!navbarOpen ? (
+                <button
+                  onClick={() => setnavbarOpen(true)}
+                  className="flex items-center px-3 py-2 border rounded border-blue-500 text-blue-500 hover:text-white hover:border-white"
+                >
+                  <HamBuger />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setnavbarOpen(false)}
+                  className="flex items-center px-3 py-2 border rounded border-blue-500 text-blue-500 hover:text-white hover:border-white"
+                >
+                  <Xmark />
+                </button>
+              )}
+            </div>
+          ) : (
+            <div className="absolute top-12 right-5">
+              {/* Add hidden md:block to hide the div on small screens */}
+              {providers &&
+                Object.values(providers).map((provider) => (
                   <button
                     type="button"
                     key={provider.name}
                     onClick={() => {
                       signIn(provider.id);
                     }}
-                    className="dropdown_link"
+                    className="blue_btn"
                   >
-                    Sign in with {provider.name}
+                    Sign in
                   </button>
-                </>
-              ))}
+                ))}
             </div>
           )}
+        </div>
+      </div>
+
+      {navbarOpen && (
+        <div className="menu md:w-auto text-center bg-gray-200" id="navbar">
+          <ul className="flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+            <Link href="/Home" className="hover:text-slate-500 mb-4 md:mb-0">
+              Home
+            </Link>
+            <Link href="/Stocks" className="hover:text-slate-500 mb-4 md:mb-0">
+              Stocks
+            </Link>
+            <Link href="/Gold" className="hover:text-slate-500 mb-4 md:mb-0">
+              Gold
+            </Link>
+            <Link href="/Fd" className="hover:text-slate-500 mb-4 md:mb-0">
+              FD
+            </Link>
+            <Link
+              href="/RealEstate"
+              className="hover:text-slate-500 mb-4 md:mb-0"
+            >
+              Real Estate
+            </Link>
+            <button
+              type="button"
+              onClick={signOut}
+              className="blue_btn md:mb-0"
+            >
+              Sign Out
+            </button>
+          </ul>
         </div>
       )}
     </nav>
