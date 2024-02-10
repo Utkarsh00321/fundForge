@@ -44,38 +44,38 @@ const Table = ({ data, deleteHandler, names }) => {
     );
   }
   return (
-    <table className="w-full text-sm text-left text-white rtl:text-right bg-blue-400  border-2  border-blue-600">
-      <thead className="text-xs text-white uppercase bg-blue-400 ">
+    <table className="w-full text-sm md:text-base text-left text-white rtl:text-right bg-blue-400 border-2 border-blue-600">
+      <thead className="text-xs md:text-sm text-white uppercase bg-blue-400 ">
         <tr>
-          <th scope="col" className="px-6 py-3 ">
+          <th scope="col" className="px-4 md:px-6 py-3">
             {names.first}
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-4 md:px-6 py-3">
             {names.second}
           </th>
-          <th scope="col" className="px-6 py-3 ">
+          <th scope="col" className="px-4 md:px-6 py-3">
             {names.third}
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-4 md:px-6 py-3">
             {names.fourth}
           </th>
-          <th scope="col" className="px-6 py-3">
+          <th scope="col" className="px-4 md:px-6 py-3">
             {names.fifth}
           </th>
-          <th scope="col" className="px-6 py-3 "></th>
+          <th scope="col" className="px-4 md:px-6 py-3"></th>
         </tr>
       </thead>
       <tbody className="bg-slate-200">
         {renderTableRow({ data, deleteHandler })}
       </tbody>
       <tfoot>
-        <tr className=" text-white uppercase bg-blue-400 ">
-          <th scope="row" className="px-6 py-3 ">
+        <tr className="text-white uppercase bg-blue-400">
+          <th scope="row" className="px-4 md:px-6 py-3">
             Total
           </th>
-          <td className="px-6 py-3">3</td>
-          <td className="px-6 py-3">21,000</td>
-          <th scope="col" className="px-6 py-3 "></th>
+          <td className="px-4 md:px-6 py-3">3</td>
+          <td className="px-4 md:px-6 py-3">21,000</td>
+          <th scope="col" className="px-4 md:px-6 py-3"></th>
         </tr>
       </tfoot>
     </table>
