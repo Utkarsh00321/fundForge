@@ -38,7 +38,7 @@ let renderTableRow = ({ data, deleteHandler }) => {
 const Table = ({ data, deleteHandler, names }) => {
   if (data.length == 0) {
     return (
-      <h1 className="text-4xl font-semibold font-satoshi text-red-500">
+      <h1 className="text-4xl text-center font-semibold font-satoshi text-red-500">
         No stocks were found!
       </h1>
     );

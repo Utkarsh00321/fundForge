@@ -133,19 +133,19 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="mt-40 md:mt-32 lg:mt-28 w-full h-screen">
       {session ? (
         <Suspense fallback={<div>loading...</div>}>
           {loading ? (
-            <div className="text-green-500 text-2xl font-satoshi">
+            <div className="text-green-500 text-center text-2xl font-satoshi">
               Loading...
             </div>
           ) : (
             <>
-              <h1 className="text-4xl font-semibold px-24 text-blue-400">
+              <h1 className="text-2xl md:text-4xl text-center font-semibold px-4 md:px-24 text-blue-400">
                 Your Portfolio Looks Amazing:
               </h1>
-              <div className="">
+              <div className="px-4 md:px-0">
                 <PieChartWrapper
                   options={chartOptions}
                   series={[
@@ -160,13 +160,13 @@ const Home = () => {
           )}
         </Suspense>
       ) : (
-        <div>
-          <h1 className="font-satoshsi text-2xl text-blue-400">
+        <div className="px-4">
+          <h1 className="font-satoshsi text-xl md:text-2xl text-blue-400">
             Sign-in to see your portfolio...
           </h1>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

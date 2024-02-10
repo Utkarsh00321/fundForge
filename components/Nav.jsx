@@ -58,19 +58,19 @@ const Nav = () => {
         {/* Move the button outside of the div for the "fundForge" heading */}
         {session?.user ? (
           <div className="flex items-center font-semibold">
-            <Link href="/Home" className="hover:text-slate-500 px-4">
+            <Link href="/Home" className="hover:text-slate-500 px-8">
               Home
             </Link>
-            <Link href="/Stocks" className="hover:text-slate-500 px-4">
+            <Link href="/Stocks" className="hover:text-slate-500 px-8">
               Stocks
             </Link>
-            <Link href="/Gold" className="hover:text-slate-500 px-4">
+            <Link href="/Gold" className="hover:text-slate-500 px-8">
               Gold
             </Link>
-            <Link href="/Fd" className="hover:text-slate-500 px-4">
+            <Link href="/Fd" className="hover:text-slate-500 px-8">
               FD
             </Link>
-            <Link href="/RealEstate" className="hover:text-slate-500 px-4">
+            <Link href="/RealEstate" className="hover:text-slate-500 px-8">
               Real Estate
             </Link>
           </div>

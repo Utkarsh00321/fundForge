@@ -133,7 +133,7 @@ const Gold = () => {
   };
 
   return (
-    <>
+    <div className="mt-28">
       <div className="grid grid-cols-2">
         <div className="card shadow ">
           <h1 className="font-bold text-center text-yellow-500 text-4xl mx-10 pr-2 py-5">
@@ -243,7 +243,7 @@ const Gold = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

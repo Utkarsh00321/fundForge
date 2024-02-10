@@ -104,7 +104,7 @@ const FD = () => {
     fifth: "Final Amount",
   };
   return (
-    <>
+    <div className="mt-28">
       {session ? (
         <Suspense fallback={<div>loading...</div>}>
           {loading ? (
@@ -178,7 +178,7 @@ const FD = () => {
           </h1>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
