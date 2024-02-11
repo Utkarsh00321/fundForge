@@ -160,23 +160,43 @@ const Nav = () => {
       </div>
 
       {navbarOpen && (
-        <div className="menu md:w-auto text-center bg-gray-200" id="navbar">
+        <div
+          className="menu w-[410px] md:w-auto text-center bg-gray-200"
+          id="navbar"
+        >
           <ul className="flex flex-col p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            <Link href="/Home" className="hover:text-slate-500 mb-4 md:mb-0">
+            <Link
+              href="/Home"
+              onClick={() => setnavbarOpen((prev) => !prev)}
+              className="hover:text-slate-500 mb-4 md:mb-0"
+            >
               Home
             </Link>
-            <Link href="/Stocks" className="hover:text-slate-500 mb-4 md:mb-0">
+            <Link
+              href="/Stocks"
+              onClick={() => setnavbarOpen((prev) => !prev)}
+              className="hover:text-slate-500 mb-4 md:mb-0"
+            >
               Stocks
             </Link>
-            <Link href="/Gold" className="hover:text-slate-500 mb-4 md:mb-0">
+            <Link
+              href="/Gold"
+              onClick={() => setnavbarOpen((prev) => !prev)}
+              className="hover:text-slate-500 mb-4 md:mb-0"
+            >
               Gold
             </Link>
-            <Link href="/Fd" className="hover:text-slate-500 mb-4 md:mb-0">
+            <Link
+              href="/Fd"
+              onClick={() => setnavbarOpen((prev) => !prev)}
+              className="hover:text-slate-500 mb-4 md:mb-0"
+            >
               FD
             </Link>
             <Link
               href="/RealEstate"
               className="hover:text-slate-500 mb-4 md:mb-0"
+              onClick={() => setnavbarOpen((prev) => !prev)}
             >
               Real Estate
             </Link>
