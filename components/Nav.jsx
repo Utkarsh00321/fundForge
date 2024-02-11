@@ -44,7 +44,7 @@ const Nav = () => {
     setUpProviders();
   }, []);
   return (
-    <nav className="fixed grid mx-auto border border-[#88acd7] top-0 left-0 right-0 z-10 bg-transparent bg-opacity-90">
+    <nav className="fixed grid mx-auto border border-[#88acd7] top-0 left-0 right-0 z-10 bg-white bg-opacity-90">
       {/* Desktop Navigation */}
       {/* Desktop Navigation */}
       <div className="relative container lg:py-6 mx-auto px-4 py-2 hidden md:flex md:items-center md:justify-between">

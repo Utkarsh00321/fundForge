@@ -99,8 +99,8 @@ const RealEstate = () => {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-2">
+    <div className="mt-40 md:mt-32 lg:mt-28 w-full h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         {session ? (
           <Suspense fallback={<div>loading...</div>}>
             {loading ? (
@@ -109,27 +109,19 @@ const RealEstate = () => {
               </div>
             ) : (
               <>
-                {realEstate.length > 0 ? (
-                  <>
-                    <div>
-                      <h1 className="text-4xl font-semibold text-blue-500">
-                        Your Real Estate Distribution:
-                      </h1>
-                      <DonutChartWrapper
-                        data={realEstate.map((item) => ({
-                          price: item.purchasePrice,
-                          name: item.propertyId,
-                        }))}
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <p className="text-center mt-32 text-red-500 text-2xl">
-                    No data available!
-                  </p>
-                )}
-                <div className="">
-                  <h1 className="text-4xl mt-4 font-semibold text-blue-500 ml-24">
+                <div className="md:order-2">
+                  <h1 className="text-4xl mb-24 md:mt-4 md:mb-8 font-semibold text-blue-500">
+                    Your Real Estate Distribution:
+                  </h1>
+                  <DonutChartWrapper
+                    data={realEstate.map((item) => ({
+                      price: item.purchasePrice,
+                      name: item.propertyId,
+                    }))}
+                  />
+                </div>
+                <div className="mt-24 md:mt-0 md:order-1">
+                  <h1 className="text-4xl mt-4 font-semibold text-blue-500">
                     Add
                   </h1>
                   <form className="my-4">
@@ -138,7 +130,7 @@ const RealEstate = () => {
                       value={realEstateForm.propertyType || ""}
                       name="propertyType"
                       placeholder="Property Type"
-                      className="border-blue-500 border-2 ml-24 mr-2 my-2 px-2 py-1 rounded"
+                      className="border-blue-500 w-[360px] border-2  my-2 px-2 py-2 rounded"
                       onChange={handleChange}
                     />
                     <input
@@ -146,7 +138,7 @@ const RealEstate = () => {
                       value={realEstateForm.address || ""}
                       name="address"
                       placeholder="Address"
-                      className="border-blue-500 border-2 m-1 my-2  px-2 py-1 rounded"
+                      className="border-blue-500 border-2 w-[360px] my-2  px-2 py-2 rounded"
                       onChange={handleChange}
                     />
                     <input
@@ -154,16 +146,15 @@ const RealEstate = () => {
                       value={realEstateForm.purchasePrice || ""}
                       name="purchasePrice"
                       placeholder="Purchase Price"
-                      className="border-blue-500 border-2 ml-24 mr-2 my-2 px-2 py-1 rounded"
+                      className="border-blue-500 border-2 w-[360px] my-2 px-2 py-2 rounded"
                       onChange={handleChange}
                     />
-
                     <input
                       type="number"
                       value={realEstateForm.squareFootage || ""}
                       name="squareFootage"
                       placeholder="Area"
-                      className="border-blue-500 border-2 m-1 my-2  px-2 py-1 rounded"
+                      className="border-blue-500 border-2 my-2 w-[360px] px-2 py-2 rounded"
                       onChange={handleChange}
                     />
                     <input
@@ -171,17 +162,17 @@ const RealEstate = () => {
                       value={realEstateForm.propertyId || ""}
                       name="propertyId"
                       placeholder="Property ID"
-                      className="border-blue-500 border-2 ml-24 mr-2 my-2 px-2 py-1 rounded"
+                      className="border-blue-500 border-2 w-[360px] my-2 px-2 py-2 rounded"
                       onChange={handleChange}
                     />
                     <button
                       onClick={addrealEstate}
-                      className="w-[410px] ml-24 bg-blue-500 opacity-90 text-white rounded my-2 px-4 py-2 font-semibold"
+                      className="w-[360px]  bg-blue-500 opacity-90 text-white rounded my-2  py-2 font-semibold"
                     >
                       Add
                     </button>
                   </form>
-                  <h1 className=" text-4~xl mt-8 mb-4 font-semibold text-blue-500 ml-24">
+                  <h1 className="text-4xl mt-8 mb-4 font-semibold text-blue-500">
                     Delete
                   </h1>
                   <form className="">
@@ -190,12 +181,12 @@ const RealEstate = () => {
                       value={deleterealEstateForm.propertyId || ""}
                       name="propertyId"
                       placeholder="Property ID"
-                      className="ml-24 w-[410px] border-blue-500 border-2  py-1 rounded"
+                      className="w-[360px] border-blue-500 border-2  py-2 rounded"
                       onChange={deletehandleChange}
                     />
                     <button
                       onClick={deleterealEstate}
-                      className="w-[410px] ml-24 bg-blue-500 opacity-90 text-white rounded mt-4 py-2 font-semibold"
+                      className="w-[360px] bg-blue-500 opacity-90 mb-8 md:mb-0 text-white rounded mt-4 py-2 font-semibold"
                     >
                       Delete
                     </button>
@@ -212,7 +203,7 @@ const RealEstate = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

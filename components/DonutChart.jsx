@@ -23,7 +23,8 @@ const DonutChart = ({ data }) => {
       options={chartOptions}
       series={chartData.series}
       type="donut"
-      width="600"
+      width="100%"
+      style={{ maxWidth: "600px", margin: "auto" }}
     />
   );
 };
