@@ -133,41 +133,41 @@ const Gold = () => {
   };
 
   return (
-    <div className="mt-28">
-      <div className="grid grid-cols-2">
-        <div className="card shadow ">
-          <h1 className="font-bold text-center text-yellow-500 text-4xl mx-10 pr-2 py-5">
-            Gold
-          </h1>
+    <div className="mt-40 md:mt-32 lg:mt-28 w-full h-screen">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="order-1 ">
+          <div
+            className="card w-[370px] md:h-[508px] md:w-[508px] shadow"
+            id="gold"
+          >
+            <h1 className="font-bold md:text-center text-yellow-500 text-4xl mx-2 py-2 ">
+              Gold
+            </h1>
+            <p className="md:text-center md:mt-8">
+              <span
+                className={`font-semibold mx-2 my-8 tracking-tight text-4xl ${
+                  calculatePercentageChange(+gold * +livePrice, gold, price) < 0
+                    ? "text-red-500"
+                    : "text-green-500"
+                }`}
+              >
+                {calculatePercentageChange(gold * livePrice, gold, price)} %
+              </span>
+            </p>
 
-          <p>
-            <span
-              className={`font-semibold mx-32 tracking-tight text-4xl ${
-                calculatePercentageChange(+gold * +livePrice, gold, price) < 0
-                  ? "text-red-500"
-                  : "text-green-500"
-              }`}
-            >
-              {calculatePercentageChange(gold * livePrice, gold, price)} %
-            </span>
-          </p>
-
-          <div className="container w-fit px-10 mx-20 my-5">
-            <p className="text-lg text-slate-700 font-semibold py-3">
+            <p className="text-lg md:text-center md:my-4 text-slate-700 font-semibold py-3">
               Gold Owned:{" "}
               <span className="text-xl text-blue-500 font-semibold">
                 {gold} gm
               </span>
             </p>
-
-            <p className="text-lg text-slate-700 font-semibold py-3">
+            <p className="text-lg md:text-center md:my-4 text-slate-700 font-semibold py-3">
               Market Price:{" "}
               <span className="text-xl text-blue-500 font-semibold">
                 {+gold * +livePrice}
               </span>
             </p>
-
-            <p className="text-xl text-slate-700 font-semibold py-3">
+            <p className="text-xl md:text-center md:my-4 text-slate-700 font-semibold py-3">
               Purchase Price:{" "}
               <span className="text-xl text-blue-500 font-semibold">
                 {price}
@@ -175,17 +175,17 @@ const Gold = () => {
             </p>
           </div>
         </div>
-        <div>
-          <h1 className="text-4xl font-semibold text-blue-500 ml-24">
+        <div className="order-2 my-4" id="input">
+          <h1 className="text-4xl font-semibold text-blue-500 mx-1">
             Add Gold
           </h1>
-          <form className="my-6">
+          <form className="my-6 ">
             <input
               type="text"
               value={goldForm.huid || ""}
               name="huid"
               placeholder="HUID Number"
-              className="border-blue-500 border-2 ml-24 mr-2 my-2 px-2 py-1 rounded"
+              className="border-blue-500 w-[370px] md:w-[250px] border-2 md:mx-1 my-2  py-2 rounded"
               onChange={handleChange}
             />
             <input
@@ -193,7 +193,7 @@ const Gold = () => {
               value={goldForm.weight || ""}
               name="weight"
               placeholder="Weight in gm"
-              className="border-blue-500 border-2 m-1 my-2  px-2 py-1 rounded"
+              className="border-blue-500 border-2 w-[370px] md:w-[250px] md:mx-1 my-2  py-2 rounded"
               onChange={handleChange}
             />
             <input
@@ -201,42 +201,40 @@ const Gold = () => {
               value={goldForm.purchasePrice || ""}
               name="purchasePrice"
               placeholder="Purchase Price"
-              className="border-blue-500 border-2 ml-24 mr-2 my-2 px-2 py-1 rounded"
+              className="border-blue-500 border-2 w-[370px] md:w-[250px] md:mx-1 my-2  py-2 rounded"
               onChange={handleChange}
             />
-
             <input
               type="number"
               value={goldForm.type || ""}
               name="type"
               placeholder="Purity"
-              className="border-blue-500 border-2 m-1 my-2 px-2 py-1 rounded"
+              className="border-blue-500 border-2 w-[370px] md:w-[250px] md:mx-1 my-2  py-2 rounded"
               onChange={handleChange}
             />
-
             <button
               onClick={addGold}
-              className="w-[410px] ml-24 bg-blue-500 opacity-90 text-white rounded my-2 px-4 py-2 font-semibold"
+              className="w-[370px] md:w-[508px] md:mx-1 bg-blue-500 opacity-90 text-white rounded my-2 px-4 py-2 font-semibold"
             >
               Add
             </button>
           </form>
-          <h1 className="text-4xl mb-6 font-semibold text-blue-500 ml-24">
+          <h1 className="text-4xl mb-6 font-semibold text-blue-500 md:mx-1 py-2">
             Delete Gold
           </h1>
-          <form className="">
+          <form className="md:mx-1 py-2">
             <input
               type="text"
               value={deletegoldForm.huid || ""}
               name="huid"
               placeholder="HUID Number"
-              className="ml-24 w-[410px] border-blue-500 border-2  py-1 rounded"
+              className="w-[370px] md:w-[508px] border-blue-500 border-2  py-2 rounded"
               onChange={deletehandleChange}
             />
             <br />
             <button
               onClick={deleteGold}
-              className="w-[410px] ml-24 bg-blue-500 opacity-90 text-white rounded mt-4 py-2 font-semibold"
+              className="w-[370px] md:w-[508px] bg-blue-500 opacity-90 text-white rounded mt-4 mb-8 py-2 font-semibold"
             >
               Delete
             </button>
