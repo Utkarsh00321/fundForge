@@ -143,8 +143,8 @@ const Stocks = () => {
             </form>
           </div>
         </div>
-        <div className="md:mt-0 mt-8 ">
-          <div>
+        <div className="md:mt-0 mt-8 md:mx-32 ">
+          <div className="md:ml-8">
             <h1 className="text-4xl text-blue-500 text-center font-semibold pb-8">
               Your stocks
             </h1>

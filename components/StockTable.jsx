@@ -7,7 +7,7 @@ let renderTableRow = ({ data, deleteHandler }) => {
       {data.map((item) => (
         <tr
           key={item._id}
-          className="w-full text-black bg-white border-2 border-blue-600"
+          className="w-full md:w-[800px] text-black bg-white border-2 border-blue-600"
         >
           <th
             scope="row"
@@ -36,15 +36,8 @@ let renderTableRow = ({ data, deleteHandler }) => {
 };
 
 const Table = ({ data, deleteHandler, names }) => {
-  if (data.length == 0) {
-    return (
-      <h1 className="text-4xl text-center font-semibold font-satoshi text-red-500">
-        No stocks were found!
-      </h1>
-    );
-  }
   return (
-    <table className="w-full  text-sm md:text-base text-left text-white rtl:text-right bg-blue-400 border-2 border-blue-600">
+    <table className="w-full md:w-[800px]  text-sm md:text-base text-left text-white rtl:text-right bg-blue-400 border-2 border-blue-600">
       <thead className="text-xs md:text-sm text-white uppercase bg-blue-400 ">
         <tr>
           <th scope="col" className="px-1 md:px-6 py-2">

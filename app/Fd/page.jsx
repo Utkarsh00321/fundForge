@@ -114,52 +114,60 @@ const FD = () => {
           ) : (
             <>
               <div className="">
-                <h1 className="text-4xl font-semibold md:mx-36 text-blue-500">
+                <h1 className="text-4xl font-semibold md:mx-40 md:mb-12 text-blue-500">
                   Create Fixed Deposit
                 </h1>
-                <form className="my-8">
-                  <input
-                    type="text"
-                    value={fdForm?.bankName || ""}
-                    name="bankName"
-                    placeholder="Bank Name"
-                    className="border-blue-500 border-2 w-[350px] md:mx-36 my-2 py-2 px-2 rounded"
-                    onChange={handleChange}
-                  />
-                  <input
-                    type="number"
-                    value={fdForm?.principalAmount || ""}
-                    name="principalAmount"
-                    placeholder="Principal Amount"
-                    className="border-blue-500 border-2 w-[350px] my-2 py-2 px-2 rounded"
-                    onChange={handleChange}
-                  />
+                <form className="md:flex md:flex-wrap md:items-center md:mx-40">
+                  <div className="md:w-1/2 mb-4  pr-0 md:pr-5 ">
+                    <input
+                      type="text"
+                      value={fdForm?.bankName || ""}
+                      name="bankName"
+                      placeholder="Bank Name"
+                      className="border-blue-500 border-2 w-full px-4 py-2 rounded"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="md:w-1/2 mb-4  pr-0 md:pr-5 ">
+                    <input
+                      type="number"
+                      value={fdForm?.principalAmount || ""}
+                      name="principalAmount"
+                      placeholder="Principal Amount"
+                      className="border-blue-500 border-2 w-full px-4 py-2 rounded"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="md:w-1/2 mb-4  pr-0 md:pr-5 ">
+                    <input
+                      type="number"
+                      value={fdForm?.interestRate || ""}
+                      name="interestRate"
+                      placeholder="Interest Rate"
+                      className="border-blue-500 border-2 w-full px-4 py-2 rounded"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="md:w-1/2 mb-4  pr-0 md:pr-5 ">
+                    <input
+                      type="number"
+                      value={fdForm?.tenure || ""}
+                      name="tenure"
+                      placeholder="Tenure"
+                      className="border-blue-500 border-2 w-full px-4 py-2 rounded"
+                      onChange={handleChange}
+                    />
+                  </div>
 
-                  <input
-                    type="number"
-                    value={fdForm?.interestRate || ""}
-                    name="interestRate"
-                    placeholder="Interest Rate"
-                    className="border-blue-500 border-2 w-[350px] md:mx-36 my-2 py-2 px-2 rounded"
-                    onChange={handleChange}
-                  />
-                  <input
-                    type="number"
-                    value={fdForm?.tenure || ""}
-                    name="tenure"
-                    placeholder="Tenure"
-                    className="border-blue-500 border-2 w-[350px] py-2 my-2 px-2 rounded"
-                    onChange={handleChange}
-                  />
                   <button
                     onClick={addfd}
-                    className="bg-blue-500 opacity-90 text-white md:mx-36 py-2 my-4 px-2 w-[350px] md:w-[843px] rounded  font-semibold"
+                    className="bg-blue-500 opacity-90 text-white rounded-md w-[365px] md:w-[812px] md:mb-12 px-4 py-2 font-semibold"
                   >
                     Add
                   </button>
                 </form>
               </div>
-              <h1 className="text-4xl font-semibold mb-8 md:mx-36 text-blue-500">
+              <h1 className="text-4xl font-semibold mb-8 md:mt-8 md:mx-40 text-blue-500">
                 Your Fixed Deposits
               </h1>
               <Table
