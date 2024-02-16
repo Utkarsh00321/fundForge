@@ -102,8 +102,8 @@ const Nav = () => {
                         <Image
                           src={provider.logo}
                           alt={provider.name}
-                          width={30}
-                          height={30}
+                          width={37}
+                          height={37}
                           className="rounded-full"
                         />
                         <span>{provider.name}</span>
