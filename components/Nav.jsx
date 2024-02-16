@@ -95,18 +95,14 @@ const Nav = () => {
                   {providers &&
                     Object.values(providers).map((provider) => (
                       <button
+                        type="button"
                         key={provider.name}
-                        onClick={() => signIn(provider.id)}
-                        className="flex items-center justify-start w-full p-2 rounded-md hover:bg-gray-100"
+                        onClick={() => {
+                          signIn(provider.id);
+                        }}
+                        className="block w-full text-left px-4 py-2 hover:bg-gray-200"
                       >
-                        <Image
-                          src={provider.logo}
-                          alt={provider.name}
-                          width={37}
-                          height={37}
-                          className="rounded-full"
-                        />
-                        <span>{provider.name}</span>
+                        Sign in with {provider.name}
                       </button>
                     ))}
                 </div>
@@ -182,18 +178,21 @@ const Nav = () => {
                     {providers &&
                       Object.values(providers).map((provider) => (
                         <button
+                          type="button"
                           key={provider.name}
-                          onClick={() => signIn(provider.id)}
-                          className="flex items-center justify-start w-full p-2 rounded-md hover:bg-gray-100"
+                          onClick={() => {
+                            signIn(provider.id);
+                          }}
+                          className="block w-full text-left px-4 py-2 hover:bg-gray-200"
                         >
                           <Image
-                            src={provider.logo}
-                            alt={provider.name}
-                            width={30}
-                            height={30}
-                            className="rounded-full"
+                            src={`assets/icons/${provider.name}.png`}
+                            alt="provider logo"
+                            height={37}
+                            width={37}
+                            className="object-contain"
                           />
-                          <span>{provider.name}</span>
+                          Sign in with {provider.name}
                         </button>
                       ))}
                   </div>
