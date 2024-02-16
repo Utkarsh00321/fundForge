@@ -73,7 +73,7 @@ const Nav = () => {
             ))}
           </div>
         ) : (
-          <div className="absolute top-6 right-5">
+          <div className="absolute top-12 right-5">
             {!showProvidersDropdown ? (
               <button
                 type="button"
@@ -83,7 +83,7 @@ const Nav = () => {
                 Sign in
               </button>
             ) : (
-              <div className="relative">
+              <div className="flex">
                 <button
                   type="button"
                   onClick={() => setShowProvidersDropdown(false)}
@@ -91,21 +91,22 @@ const Nav = () => {
                 >
                   Cancel
                 </button>
-                <div className="absolute top-full left-0 w-full bg-white border border-[#88acd7] mt-1 rounded-b-md">
-                  {providers &&
-                    Object.values(providers).map((provider) => (
-                      <button
-                        type="button"
-                        key={provider.name}
-                        onClick={() => {
-                          signIn(provider.id);
-                        }}
-                        className="block w-full text-left px-4 py-2 hover:bg-gray-200"
-                      >
-                        Sign in with {provider.name}
-                      </button>
+                {providers && (
+                  <div className="dropdown1">
+                    {Object.values(providers).map((provider) => (
+                      <>
+                        <button
+                          type="button"
+                          key={provider.name}
+                          onClick={() => signIn(provider.id)}
+                          className="dropdown_link"
+                        >
+                          Sign in with {provider.name}
+                        </button>
+                      </>
                     ))}
-                </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -166,7 +167,7 @@ const Nav = () => {
                   Sign in
                 </button>
               ) : (
-                <div className="relative">
+                <div className="flex">
                   <button
                     type="button"
                     onClick={() => setShowProvidersDropdown(false)}
@@ -174,28 +175,22 @@ const Nav = () => {
                   >
                     Cancel
                   </button>
-                  <div className="absolute top-full left-0 w-full bg-white border border-[#88acd7] mt-1 rounded-b-md">
-                    {providers &&
-                      Object.values(providers).map((provider) => (
-                        <button
-                          type="button"
-                          key={provider.name}
-                          onClick={() => {
-                            signIn(provider.id);
-                          }}
-                          className="block w-full text-left px-4 py-2 hover:bg-gray-200"
-                        >
-                          <Image
-                            src={`assets/icons/${provider.name}.png`}
-                            alt="provider logo"
-                            height={37}
-                            width={37}
-                            className="object-contain"
-                          />
-                          Sign in with {provider.name}
-                        </button>
+                  {providers && (
+                    <div className="dropdown1">
+                      {Object.values(providers).map((provider) => (
+                        <>
+                          <button
+                            type="button"
+                            key={provider.name}
+                            onClick={() => signIn(provider.id)}
+                            className="dropdown_link"
+                          >
+                            Sign in with {provider.name}
+                          </button>
+                        </>
                       ))}
-                  </div>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
